@@ -108,12 +108,14 @@ void op_pstr(stack_t **head, unsigned int line_number)
 
 	ptr = *head;
 
+	while (ptr->next != NULL)
+		ptr = ptr->next;
 	while (ptr != NULL)
 	{
 		if ((ptr->n > 0 || ptr->n < 127) && ptr->n != 0)
 		{
 			printf("%c", ptr->n);
-			ptr = ptr->next;
+			ptr = ptr->prev;
 		}
 		else
 			break;
